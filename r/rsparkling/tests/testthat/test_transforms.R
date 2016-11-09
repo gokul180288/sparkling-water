@@ -10,8 +10,6 @@ test_that("Test transformation from h2o frame to data frame", {
   expect_equal(as.data.frame(tally(df_tbl))$n,nrow(df_hex))
   expect_equal(ncol(df_tbl),ncol(df_hex))
   expect_equal(colnames(df_tbl),colnames(df_hex))
-
-
 })
 
 test_that("Test transformation of a spark data_frame of bools to an h2o frame of bools", {
@@ -23,8 +21,6 @@ test_that("Test transformation of a spark data_frame of bools to an h2o frame of
   expect_equal(df_hex[1,2],0)
   expect_equal(df_hex[1,3],1)
   expect_equal(df_hex[1,4],0)
-
-
 })
 
 test_that("Test transformation of a spark data_frame of complex types to an h2o frame of complex types", {
@@ -39,8 +35,6 @@ test_that("Test transformation of a spark data_frame of complex types to an h2o 
   expect_equal(df_hex[1,1],2)
   expect_equal(df_hex[1,2],"aa")
   expect_equal(df_hex[1,3],1)
-
-
 })
 
 test_that("Test transformation of a spark data_frame of float types to an h2o frame of floats", {
@@ -51,8 +45,6 @@ test_that("Test transformation of a spark data_frame of float types to an h2o fr
   expect_equal(df_hex[1,1],1.5)
   expect_equal(df_hex[1,2],1.3333333333)
   expect_equal(df_hex[1,3],178.5555)
-
-
 })
 
 test_that("Test transformation of a spark data_frame of int types to an h2o frame of ints", {
@@ -63,7 +55,6 @@ test_that("Test transformation of a spark data_frame of int types to an h2o fram
   expect_equal(df_hex[1,1],1)
   expect_equal(df_hex[1,2],125)
   expect_equal(df_hex[1,3],1778)
-
 })
 
 test_that("Test transformation of a spark data_frame of str types to an h2o frame of str", {
@@ -74,7 +65,6 @@ test_that("Test transformation of a spark data_frame of str types to an h2o fram
   expect_equal(df_hex[1,1],"A")
   expect_equal(df_hex[1,2],"B")
   expect_equal(df_hex[1,3],"C")
-
 })
 
 test_that("Test transformation from dataframe to h2o frame", {
@@ -85,9 +75,7 @@ test_that("Test transformation from dataframe to h2o frame", {
    expect_equal(as.data.frame(tally(mtcars_tbl))$n,nrow(mtcars_hf))
    expect_equal(ncol(mtcars_tbl),ncol(mtcars_hf))
    expect_equal(colnames(mtcars_tbl),colnames(mtcars_hf))
-
 })
-
 
 test_that("Test transformation from dataframe to h2o frame", {
    sc <- spark_connect(master = "local[*]")
@@ -95,6 +83,4 @@ test_that("Test transformation from dataframe to h2o frame", {
    mtcars_hf_name <- as_h2o_frame(sc, mtcars_tbl, name = "frame1")
 
    expect_equal(h2o.getId(mtcars_hf_name), "frame1")
-
 })
-
